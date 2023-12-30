@@ -8,7 +8,7 @@ import styles from './page.module.css'
 
 export default function Home() {
     const videoID: string = '8TxSgMUMIP4';
-    const [showVideo, setShowVideo] = useState<boolean>(false);
+    const [showVideo, setShowVideo] = useState<boolean>(true);
 
     const toggleShowVideo = () => {
         setShowVideo(!showVideo);
