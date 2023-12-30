@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, Component, RefObject } from 'react';
+import React, { Component, RefObject } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
 
 interface YouTubePlayerProps {
