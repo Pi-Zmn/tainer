@@ -16,12 +16,21 @@ export default class YouTubePlayer extends Component<YouTubePlayerProps, any> {
         event.target.playVideo();
     }
 
-
     render() {
         const { videoId } = this.props;
 
+        const opts: YouTubeProps['opts'] = {
+            maxHeight: '1000',
+            width: '100%',
+            playerVars: {
+                // https://developers.google.com/youtube/player_parameters
+                autoplay: 1,
+            },
+        };
+
         return (
             <YouTube
+                opts={opts}
                 videoId={videoId}
                 onReady={this.onReady}
                 ref={this.playerRef}
