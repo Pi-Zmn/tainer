@@ -1,0 +1,5 @@
+build
+node_modules
+.prettierrc.json
+.next
+next.config.js
