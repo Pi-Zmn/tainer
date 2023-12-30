@@ -1,22 +1,31 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, Component, RefObject } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
 
-export default function YouTubePlayer() {
-    const onPlayerReady: YouTubeProps['onReady'] = (event) => {
-        // access to player in all event handlers via event.target
-        event.target.pauseVideo();
+interface YouTubePlayerProps {
+    videoId: string;
+}
+
+export default class YouTubePlayer extends Component<YouTubePlayerProps, any> {
+    private playerRef: RefObject<YouTube> = React.createRef();
+
+    // Event handler for when the video player is ready
+    onReady(event: { target: any }) {
+        // You can do additional actions when the video is ready
+        event.target.playVideo();
     }
 
-    const opts: YouTubeProps['opts'] = {
-        height: '390',
-        width: '640',
-        playerVars: {
-            // https://developers.google.com/youtube/player_parameters
-            autoplay: 1,
-        },
-    };
 
-    return <YouTube videoId="voKKXysVIlQ" opts={opts} onReady={onPlayerReady} />;
+    render() {
+        const { videoId } = this.props;
+
+        return (
+            <YouTube
+                videoId={videoId}
+                onReady={this.onReady}
+                ref={this.playerRef}
+            />
+        );
+    }
 }
